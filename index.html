@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InnerWorlds Mental Health Platform</title>
+<meta name="description" content="A digital learning environment promoting mental health literacy, emotional well-being and resilience for children, adolescents, educators and families.">
+<style>
+:root{--red:#d3321d;--pink:#efa798;--blue:#00689a;--navy:#003549;--cream:#f8e9c0;--ink:#1a1a18;--bg:#fffdf8;--card:#fff;--muted:#5b5b55;--line:#e8e2d0}
+@media (prefers-color-scheme:dark){:root{--bg:#14161a;--card:#1d2026;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--blue)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px}
+header img{height:44px;display:block}
+nav a{margin-left:18px;text-decoration:none;font-weight:600;color:var(--ink)}
+nav a:hover{color:var(--red)}
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:0 0 16px}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero img{width:100%;max-width:420px;justify-self:center}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;margin:6px 8px 0 0}
+.btn.alt{background:transparent;color:var(--blue);border:2px solid var(--blue)}
+section{padding:40px 0}
+h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 8px}
+.lead{color:var(--muted);max-width:720px}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.zone{border-radius:16px;padding:18px;color:#111}
+.zone b{display:block;font-size:1.1rem}
+.g{background:#a9dfb5}.y{background:#f7e08a}.r{background:#f4a79b}
+.fmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.fmt div{background:var(--cream);border-radius:16px;padding:18px}
+.fmt strong{display:block;color:var(--red);margin-bottom:4px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.tabs button{font:inherit;font-weight:600;padding:8px 16px;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--blue);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--blue);color:#fff}
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;border-top:6px solid var(--blue)}
+.mod:nth-child(3n+1){border-top-color:var(--red)}.mod:nth-child(3n+2){border-top-color:var(--pink)}
+.num{font-size:.8rem;font-weight:800;letter-spacing:.08em;color:var(--red)}
+.mod h3{margin:2px 0 4px;font-size:1.2rem;line-height:1.25}
+.sub{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.mod p{margin:0 0 10px;font-size:.95rem}
+.msg{background:var(--cream);border-radius:10px;padding:10px 12px;font-size:.92rem}
+.aud{margin-top:auto;padding-top:14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px dashed var(--line);font-size:.92rem}
+.row span{font-weight:600}
+.row a{margin-left:8px;font-weight:600;white-space:nowrap}
+.soon{color:var(--muted);font-style:italic;font-size:.9rem}
+.final{background:var(--navy);color:#fff;border-radius:22px;padding:32px;text-align:center}
+.final .btn{background:var(--cream);color:var(--navy)}
+footer{padding:32px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="#top"><img src="logo.webp" alt="InnerWorlds"></a>
+<nav><a href="#about">About</a><a href="#modules">Modules</a><a href="#check">Quiz</a></nav></div></header>
+
+<main id="top">
+<div class="wrap">
+<div class="hero">
+  <div>
+    <h1>Understand your <em>inner world</em>. Support others'.</h1>
+    <p class="lead">A digital learning platform that promotes mental health literacy, emotional well-being and resilience among children, adolescents, educators and families.</p>
+    <a class="btn" href="#modules">Explore the 10 modules</a><a class="btn alt" href="#about">How it works</a>
+  </div>
+  <img src="logo.webp" alt="Heart and brain emerging from a phone screen">
+</div>
+</div>
+
+<section id="about"><div class="wrap">
+  <h2>Mental health is a continuum</h2>
+  <p class="lead">Everyone moves between green, yellow and red zones over time. No emotional state is permanent, and recognising our own experiences and those of others is a shared responsibility of the whole school community.</p>
+  <div class="zones">
+    <div class="zone g"><b>Green</b>Feeling well, coping, connected.</div>
+    <div class="zone y"><b>Yellow</b>Stressed or struggling — time to use coping tools and talk.</div>
+    <div class="zone r"><b>Red</b>Significant distress — seek appropriate support.</div>
+  </div>
+  <h2 style="margin-top:36px">What each module includes</h2>
+  <div class="fmt">
+    <div><strong>Avatar video</strong>A short presentation of the module, tailored to each audience.</div>
+    <div><strong>Journal page</strong>Downloadable: brief theory, reflection/journaling and quiz questions.</div>
+    <div><strong>Teacher &amp; youth-worker kit</strong>Materials to run lessons and workshops on the topic.</div>
+    <div><strong>Interactive &amp; digital</strong>Focused on awareness, coping strategies and resilience-building.</div>
+  </div>
+</div></section>
+
+<section id="modules"><div class="wrap">
+  <h2>Learning modules</h2>
+  <p class="lead">Each module has content for three audiences. Pick yours to highlight its videos and questionnaires.</p>
+  <div class="tabs" role="group" aria-label="Audience">
+    <button data-a="all" aria-pressed="true">All</button>
+    <button data-a="t" aria-pressed="false">Teachers</button>
+    <button data-a="a1" aria-pressed="false">Adolescents 12–14</button>
+    <button data-a="a2" aria-pressed="false">Adolescents 15–18</button>
+  </div>
+  <div class="mods" id="mods"></div>
+</div></section>
+
+<section id="check"><div class="wrap">
+  <div class="final">
+    <h2>✅ Check what you know</h2>
+    <p>Finished the modules? Test what you've learned with the final quiz.</p>
+    <a class="btn" href="https://aulavirtual.uji.es/mod/resource/view.php?id=5997756">Open the quiz file</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">InnerWorlds Mental Health Platform. Educational content, not a diagnostic or clinical tool. If you or someone you know needs help, talk to a trusted adult or a health professional.</div></footer>
+
+<script>
+const B='https://aulavirtual.uji.es/mod/';
+// [title, subtitle, summary, central message, {t:[video,quiz], a1:[..], a2:[..]}]
+const M=[
+["What is Mental Health?","The continuum model: green / yellow / red zones","A universal approach where everyone practises the same foundations: anonymous check-ins, grounding body scans, mindful observation and private self-reflection. Personal zone charts and coping menus build a shared language.","No emotional state is permanent; fluctuation is normal and noticing it in ourselves and others is a collective responsibility.",{t:[5899407,5899413],a1:[5899408,5899415],a2:[5899410,5899416]}],
+["Distress vs disorder","Normal fluctuation; when to pay closer attention","Learn to tell everyday emotional ups and downs from signs that call for closer attention.","",null],
+["Emotions & self-awareness","Emotional vocabulary, triggers, granularity","Move from broad emotional labels to precise words, linking feelings to triggers and body sensations with emotion wheels and check-ins.","The more precisely we name what we feel, the better we understand and regulate it.",{t:[5982544,5982545],a1:[5982547,5982548],a2:[5982550,5982551]}],
+["Common challenges","Early signs of depression, anxiety, ADHD and eating disorders","How these difficulties can feel from the inside. Behaviour that looks like laziness, rudeness or fussiness may hide very different experiences. The aim is empathy, not diagnosis.","What we see outside doesn't always show what someone experiences inside. Listen without judgement and know when to seek support.",{t:[5983389,5983390],a1:[5983392,5983393],a2:[5983395,5983396]}],
+["Stigma & help-seeking","Why people stay silent; reframing strength","Why people stay silent: fear of judgement, privacy worries, the belief they must cope alone. Silence is often self-protection.","Asking for help is a strength and a learnable skill. Calm, curious responses open the door; rushed ones close it.",{t:[5983613,5983615],a1:[5983618,5983619],a2:[5983621,5983622]}],
+["Resilience & coping","Bounce-back skills; problem-solving; positive youth development","Resilience as a skill: identify the problem, weigh options, try a solution, seek support and learn from the outcome.","Resilience doesn't mean never falling — it means learning to bounce back.",{t:[5986842,5986843],a1:[5986845,5986846],a2:[5986848,5986849]}],
+["Healthy habits","Sleep, movement, nutrition, mindfulness, digital balance","Five connected daily habits that shape mood, concentration, energy and resilience. No perfect routines — just spotting what could improve.","Small, consistent changes make a meaningful difference over time.",{t:[5987017,5987018],a1:[5987020,5987021],a2:[5987023,5987024]}],
+["Digital life & social media","Algorithmic triggers; screen time; digital literacy","How platforms hold attention through unpredictable rewards, endless scrolling and personalised feeds, and why self-regulation is harder in adolescence.","Not avoiding technology, but algorithmic self-awareness: what our feeds show us and how it makes us feel.",{t:[5987521,5987522],a1:[5987524,5987525],a2:[5987527,5987528]}],
+["Identity, culture & belonging","Multicultural stress; LGBTQ+; refugee experience; intersectionality","Identity is layered: culture, language, family, gender, beliefs, ability and migration all interact. Inclusion supports wellbeing; repeated exclusion harms it.","Belonging is built through small everyday actions: respect, inclusive language and no assumptions.",{t:[5988971,5988972],a1:[5988974,5988975],a2:[5988977,5988978]}],
+["Asking big questions","Meaning, values, uncertainty, philosophy as a coping tool","\"Who am I?\" and \"What matters to me?\" are natural questions of growing up. Exploring them openly helps us cope with uncertainty without one perfect answer.","Our values are a compass that turns uncertainty into purposeful action.",{t:[5988998,5988999],a1:[5989001,5989002],a2:[5989004,5989005]}]
+];
+const A={t:"Teachers",a1:"Ages 12–14",a2:"Ages 15–18"};
+const el=document.getElementById('mods');
+el.innerHTML=M.map((m,i)=>`<article class="mod"><div class="num">MODULE ${i+1}</div><h3>${m[0]}</h3><p class="sub">${m[1]}</p><p>${m[2]}</p>${m[3]?`<div class="msg"><b>Key message:</b> ${m[3]}</div>`:''}<div class="aud">${m[4]?Object.keys(A).map(k=>`<div class="row" data-a="${k}"><span>${A[k]}</span><span><a href="${B}url/view.php?id=${m[4][k][0]}">▶ Video</a><a href="${B}quiz/view.php?id=${m[4][k][1]}">📝 Quiz</a></span></div>`).join(''):'<p class="soon">Content coming soon.</p>'}</div></article>`).join('');
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  el.querySelectorAll('.row').forEach(r=>r.style.display=b.dataset.a==='all'||r.dataset.a===b.dataset.a?'':'none');
+});
+</script>
+</body>
+</html>
