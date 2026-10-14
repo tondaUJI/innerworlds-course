@@ -113,6 +113,13 @@ en:["Asking big questions","Meaning, values, uncertainty, philosophy as a coping
 es:["Hacerse grandes preguntas","Sentido, valores, incertidumbre, la filosofía como herramienta de afrontamiento","«¿Quién soy?» y «¿Qué me importa?» son preguntas naturales al crecer. Explorarlas abiertamente nos ayuda a afrontar la incertidumbre sin necesitar una respuesta perfecta.","Nuestros valores son una brújula que convierte la incertidumbre en acción con propósito."],
 ca:["Fer-se grans preguntes","Sentit, valors, incertesa, la filosofia com a eina d'afrontament","«Qui sóc?» i «Què m'importa?» són preguntes naturals en créixer. Explorar-les obertament ens ajuda a afrontar la incertesa sense necessitar una resposta perfecta.","Els nostres valors són una brúixola que converteix la incertesa en acció amb propòsit."]}
 ];
+// Small visual scheme per module (module 1 keeps its green/yellow/red zones).
+function scheme(i,t){
+  if(i===0)return `<div class="zones"><div class="zone g">${t.zg}</div><div class="zone y">${t.zy}</div><div class="zone r">${t.zr}</div></div>`;
+  const x=typeof MX!=='undefined'&&(MX[lang]||MX.en)[i];
+  if(!x)return '';
+  return `<div class="sch ${x.type}">${x.sch.map(s=>`<div><span class="e">${s[0]}</span><span><b>${s[1]}</b>${s[2]?`<small>${s[2]}</small>`:''}</span></div>`).join('')}</div>`;
+}
 const sv=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
 let lang=sv('iw-lang')||(navigator.language||'en').slice(0,2);
 if(!T[lang])lang='en';
@@ -123,7 +130,7 @@ function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
   document.getElementById('lg').value=lang;
-  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod c${i%5}"><div class="mh"><span class="ic" aria-hidden="true">${ICONS[i]}</span><div><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3></div></div><div class="chips">${c[1].split(/[;,]\s*/).filter(Boolean).map(x=>`<span>${x}</span>`).join('')}</div>${i===0?`<div class="zones"><div class="zone g">${t.zg}</div><div class="zone y">${t.zy}</div><div class="zone r">${t.zr}</div></div>`:''}<p class="sum">${c[2]}</p>${c[3]?`<div class="msg"><b>💡 ${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
+  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],x=typeof MX!=='undefined'&&(MX[lang]||MX.en)[i],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:x?[m[lang][0],m[lang][1],x.sum,m[lang][3]]:m[lang];return `<article class="mod c${i%5}"><div class="mh"><span class="ic" aria-hidden="true">${ICONS[i]}</span><div><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3></div></div><div class="chips">${c[1].split(/[;,]\s*/).filter(Boolean).map(x=>`<span>${x}</span>`).join('')}</div>${scheme(i,t)}<p class="sum">${c[2]}</p>${c[3]?`<div class="msg"><b>💡 ${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){

@@ -101,6 +101,13 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 /* the logo has dark text: give it a light base in dark mode */
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) img[src="logo.webp"]{background:#fffdf8;border-radius:14px;padding:6px}}
 :root[data-theme=dark] img[src="logo.webp"]{background:#fffdf8;border-radius:14px;padding:6px}
+.sch{display:grid;gap:6px;margin:0 0 10px}
+.sch>div{display:flex;gap:10px;align-items:flex-start;background:color-mix(in srgb,var(--c) 10%,var(--card));border:1px solid color-mix(in srgb,var(--c) 30%,transparent);border-left:5px solid var(--c);border-radius:12px;padding:6px 12px;font-size:.9rem}
+.sch .e{font-size:1.25rem;line-height:1.4}.sch b{display:block}.sch small{display:block;color:var(--muted);font-size:.84rem;line-height:1.35}
+.sch.steps{counter-reset:s}.sch.steps .e{display:none}
+.sch.steps>div::before{counter-increment:s;content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.8rem;margin-top:1px}
+.mod.c2 .sch.steps>div::before{color:#111}
+.sch.tags{display:flex;flex-wrap:wrap}.sch.tags>div{border-left-width:1px;border-radius:999px;padding:3px 12px;align-items:center}.sch.tags .e{font-size:1rem}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>
@@ -196,6 +203,6 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 <dialog id="rd"><form id="rf" class="dlg"><h3 data-i="newPassT"></h3>
 <label><span data-i="pass"></span><input id="rp" type="password" required minlength="8" autocomplete="new-password"></label>
 <div class="act"><button class="btn" type="submit" data-i="newPassB"></button></div><p id="rm" role="status"></p></form></dialog>
-<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="profile.en.js"></script><script src="profile.es.js"></script><script src="profile.ca.js"></script><script src="profile.el.js"></script><script src="profile.ro.js"></script><script src="profile.de.js"></script><script src="i18n3.en.js"></script><script src="i18n3.es.js"></script><script src="i18n3.ca.js"></script><script src="i18n3.el.js"></script><script src="i18n3.ro.js"></script><script src="i18n3.de.js"></script><script src="account.js"></script>
+<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="profile.en.js"></script><script src="profile.es.js"></script><script src="profile.ca.js"></script><script src="profile.el.js"></script><script src="profile.ro.js"></script><script src="profile.de.js"></script><script src="i18n3.en.js"></script><script src="i18n3.es.js"></script><script src="i18n3.ca.js"></script><script src="i18n3.el.js"></script><script src="i18n3.ro.js"></script><script src="i18n3.de.js"></script><script src="modules2.en.js"></script><script src="modules2.es.js"></script><script src="modules2.ca.js"></script><script src="modules2.el.js"></script><script src="modules2.ro.js"></script><script src="modules2.de.js"></script><script src="account.js"></script>
 </body>
 </html>

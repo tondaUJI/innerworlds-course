@@ -7,8 +7,10 @@ Object.assign(T.ro,{next:"Următoarea",finish:"Termină",qOf:"Întrebarea {n} di
 Object.assign(T.de,{next:"Weiter",finish:"Fertig",qOf:"Frage {n} von {t}",right:"Richtig!",wrong:"Nicht ganz.",msgHi:"Super gemacht!",msgMid:"Guter Versuch. Lies die Erklärungen und versuche es nochmal.",msgLow:"Bleib dran. Jeder Versuch hilft dir beim Lernen.",pickT:"Wähle dein Profil",save:"Speichern",google:"Weiter mit Google",signIn:"Anmelden",signUp:"Konto erstellen",signOut:"Abmelden",email:"E-Mail",pass:"Passwort (mind. 8 Zeichen)",who:"Ich bin…",noAcc:"Noch kein Konto? Jetzt erstellen",haveAcc:"Schon ein Konto? Anmelden",checkMail:"Bestätige dein Konto über die E-Mail, die wir dir geschickt haben.",err:"Etwas ist schiefgelaufen",close:"Schließen",check:"Antworten prüfen",answerAll:"Beantworte zuerst alle Fragen.",score:"Ergebnis",retry:"Nochmal versuchen",saved:"Ergebnis in deinem Konto gespeichert.",loginToSave:"Melde dich an, um deine Ergebnisse zu speichern."});
 
 for(const l in N)Object.assign(T[l],N[l]);
+const LTT={"en": "Sign in to take the quizzes. Your results are saved to your account.", "es": "Inicia sesión para hacer los quizzes. Tus resultados se guardan en tu cuenta.", "ca": "Inicia la sessió per a fer els quizzes. Els teus resultats es guarden al teu compte.", "el": "Συνδέσου για να κάνεις τα κουίζ. Τα αποτελέσματά σου αποθηκεύονται στον λογαριασμό σου.", "ro": "Autentifică-te pentru a face quizurile. Rezultatele tale sunt salvate în contul tău.", "de": "Melde dich an, um die Quizze zu machen. Deine Ergebnisse werden in deinem Konto gespeichert."};
 const SKIP={"en": "Skip to content", "es": "Saltar al contenido", "ca": "Salta al contingut", "el": "Μετάβαση στο περιεχόμενο", "ro": "Salt la conținut", "de": "Zum Inhalt springen"};
 for(const l in SKIP)T[l].skip=SKIP[l];
+for(const l in LTT)T[l].loginToTake=LTT[l];
 const $=id=>document.getElementById(id);
 const cfg=window.IW_CONFIG||{};
 const sb=cfg.url&&cfg.key&&window.supabase?supabase.createClient(cfg.url,cfg.key):null;
@@ -25,7 +27,7 @@ const render0=render;
 render=function(){render0();paintAcc();paintBadges()};
 
 function paintBadges(){
-  document.querySelectorAll('.bdg').forEach(b=>{const r=res[b.dataset.m+b.dataset.k];b.textContent=r?` ✓ ${r.score}/${r.total}`:''});
+  document.querySelectorAll('.bdg').forEach(b=>{const r=res[b.dataset.m+b.dataset.k];b.textContent=r?` ✓ ${r.score}/${r.total}`:sb&&!user?' 🔒':''});
 }
 function paintAcc(){
   const b=$('accBtn'),t=T[lang];
@@ -98,8 +100,15 @@ if(sb)sb.auth.onAuthStateChange((ev,s)=>{
   if(user)setTimeout(loadResults,0); // don't await supabase calls inside this callback
 });
 
+// Quizzes need an account so that results are always saved.
+function needLogin(){
+  if(!sb||user)return false;
+  openAuth('in');$('am').textContent=T[lang].loginToTake;
+  return true;
+}
 // ---- final quiz: one random question per module for the chosen audience ----
 document.querySelectorAll('.fq').forEach(b=>b.onclick=()=>{
+  if(needLogin())return;
   const k=b.dataset.k,all=QZ[lang]||QZ.en;
   quiz={m:10,k,qs:all.map(mod=>mod[k][Math.floor(Math.random()*mod[k].length)]),n:0,score:0};
   showQ();$('qd').showModal();
@@ -109,6 +118,7 @@ let quiz=null;
 const LET='ABC';
 el.addEventListener('click',e=>{const b=e.target.closest('.qbtn');if(b)openQuiz(+b.dataset.m,b.dataset.k)});
 function openQuiz(m,k){
+  if(needLogin())return;
   quiz={m,k,qs:(QZ[lang]||QZ.en)[m][k],n:0,score:0};
   showQ();
   if(!$('qd').open)$('qd').showModal();
