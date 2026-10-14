@@ -18,8 +18,8 @@ en:{nav1:"About",nav2:"Modules",nav3:"Quiz",
 h1:"Understand your <em>inner world</em>. Support others'.",
 lead:"A digital learning platform that promotes mental health literacy, emotional well-being and resilience among children, adolescents, educators and families.",
 b1:"Explore the 10 modules",b2:"How it works",
-aboutH:"Mental health is a continuum",
-aboutP:"Everyone moves between green, yellow and red zones over time. No emotional state is permanent, and recognising our own experiences and those of others is a shared responsibility of the whole school community.",
+aboutH:"About the platform",
+aboutP:"InnerWorlds brings together 10 learning modules on mental health, from the continuum model and emotions to stigma, resilience, healthy habits, digital life, identity and meaning. Each module offers age-appropriate content for teachers and for adolescents aged 12–14 and 15–18, to build self-awareness, empathy, critical thinking and supportive communities.",
 zg:"<b>Green</b>Feeling well, coping, connected.",zy:"<b>Yellow</b>Stressed or struggling — time to use coping tools and talk.",zr:"<b>Red</b>Significant distress — seek appropriate support.",
 fmtH:"What each module includes",
 f1:"<strong>Avatar video</strong>A short presentation of the module, tailored to each audience.",
@@ -36,8 +36,8 @@ es:{nav1:"Acerca de",nav2:"Módulos",nav3:"Quiz",
 h1:"Comprende tu <em>mundo interior</em>. Apoya el de los demás.",
 lead:"Una plataforma de aprendizaje digital que promueve la alfabetización en salud mental, el bienestar emocional y la resiliencia en niños, adolescentes, docentes y familias.",
 b1:"Explora los 10 módulos",b2:"Cómo funciona",
-aboutH:"La salud mental es un continuo",
-aboutP:"Todas las personas se mueven entre las zonas verde, amarilla y roja a lo largo del tiempo. Ningún estado emocional es permanente, y reconocer nuestras experiencias y las de los demás es una responsabilidad compartida de toda la comunidad escolar.",
+aboutH:"Sobre la plataforma",
+aboutP:"InnerWorlds reúne 10 módulos de aprendizaje sobre salud mental, desde el modelo del continuo y las emociones hasta el estigma, la resiliencia, los hábitos saludables, la vida digital, la identidad y el sentido. Cada módulo ofrece contenido adaptado a la edad para docentes y para adolescentes de 12–14 y 15–18 años, con el fin de fomentar la autoconciencia, la empatía, el pensamiento crítico y comunidades de apoyo.",
 zg:"<b>Verde</b>Me siento bien, afronto, estoy conectado/a.",zy:"<b>Amarilla</b>Estrés o dificultad: momento de usar estrategias de afrontamiento y hablar.",zr:"<b>Roja</b>Malestar significativo: busca apoyo adecuado.",
 fmtH:"Qué incluye cada módulo",
 f1:"<strong>Vídeo con avatar</strong>Una breve presentación del módulo, adaptada a cada público.",
@@ -54,8 +54,8 @@ ca:{nav1:"Sobre el curs",nav2:"Mòduls",nav3:"Quiz",
 h1:"Comprén el teu <em>món interior</em>. Dona suport al dels altres.",
 lead:"Una plataforma d'aprenentatge digital que promou l'alfabetització en salut mental, el benestar emocional i la resiliència en xiquets, adolescents, docents i famílies.",
 b1:"Explora els 10 mòduls",b2:"Com funciona",
-aboutH:"La salut mental és un continu",
-aboutP:"Totes les persones es mouen entre les zones verda, groga i roja al llarg del temps. Cap estat emocional és permanent, i reconéixer les nostres experiències i les dels altres és una responsabilitat compartida de tota la comunitat escolar.",
+aboutH:"Sobre la plataforma",
+aboutP:"InnerWorlds reunix 10 mòduls d'aprenentatge sobre salut mental, des del model del continu i les emocions fins a l'estigma, la resiliència, els hàbits saludables, la vida digital, la identitat i el sentit. Cada mòdul ofereix contingut adaptat a l'edat per a docents i per a adolescents de 12–14 i 15–18 anys, per a fomentar l'autoconsciència, l'empatia, el pensament crític i comunitats de suport.",
 zg:"<b>Verda</b>Em senc bé, afronte, estic connectat/da.",zy:"<b>Groga</b>Estrés o dificultat: moment d'usar estratègies d'afrontament i parlar.",zr:"<b>Roja</b>Malestar significatiu: busca suport adequat.",
 fmtH:"Què inclou cada mòdul",
 f1:"<strong>Vídeo amb avatar</strong>Una breu presentació del mòdul, adaptada a cada públic.",
@@ -122,7 +122,7 @@ function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
   document.getElementById('lg').value=lang;
-  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
+  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p>${i===0?`<div class="zones"><div class="zone g">${t.zg}</div><div class="zone y">${t.zy}</div><div class="zone r">${t.zr}</div></div>`:''}<p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){
