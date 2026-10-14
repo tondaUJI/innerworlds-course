@@ -108,7 +108,7 @@ function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
   document.querySelector('.lang').value=lang;
-  el.innerHTML=M.map((m,i)=>{const c=m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${m.id?Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span><a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a><a href="${B}quiz/view.php?id=${m.id[k][1]}">${t.quiz}</a></span></div>`).join(''):`<p class="soon">${t.soon}</p>`}</div></article>`}).join('');
+  el.innerHTML=M.map((m,i)=>{const c=m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${m.id?`<a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a>`:''}<button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){
