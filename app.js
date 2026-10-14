@@ -108,13 +108,13 @@ function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
   document.querySelector('.lang').value=lang;
-  el.innerHTML=M.map((m,i)=>{const c=m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${m.id?`<a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a>`:''}<button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
+  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${m.id?`<a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a>`:''}<button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){
   document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.a===aud));
   el.querySelectorAll('.row').forEach(r=>r.style.display=aud==='all'||r.dataset.a===aud?'':'none');
 }
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{aud=b.dataset.a;filter()});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{aud=b.dataset.a;render()});
 document.querySelector('.lang').onchange=e=>{lang=e.target.value;sv('iw-lang',lang);render()};
 render();

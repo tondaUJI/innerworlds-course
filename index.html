@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>InnerWorlds Mental Health Platform</title>
 <meta name="description" content="A digital learning environment promoting mental health literacy, emotional well-being and resilience for children, adolescents, educators and families.">
+<script>try{var t=localStorage.getItem("iw-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{--red:#d3321d;--pink:#efa798;--blue:#00689a;--navy:#003549;--cream:#f8e9c0;--ink:#1a1a18;--bg:#fffdf8;--card:#fff;--muted:#5b5b55;--line:#e8e2d0}
-@media (prefers-color-scheme:dark){:root{--bg:#14161a;--card:#1d2026;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14161a;--card:#1d2026;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820;--blue:#5bb3e6}}
+:root[data-theme=dark]{--bg:#14161a;--card:#1d2026;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820;--blue:#5bb3e6}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
@@ -36,7 +38,7 @@ h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 8px}
 .fmt strong{display:block;color:var(--red);margin-bottom:4px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
 .tabs button{font:inherit;font-weight:600;padding:8px 16px;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--blue);cursor:pointer}
-.tabs button[aria-pressed=true]{background:var(--blue);color:#fff}
+.tabs button[aria-pressed=true]{background:var(--blue);color:var(--bg)}
 .mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
 .mod{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;border-top:6px solid var(--blue)}
 .mod:nth-child(3n+1){border-top-color:var(--red)}.mod:nth-child(3n+2){border-top-color:var(--pink)}
@@ -60,13 +62,29 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 .dlg{padding:24px;margin:0}.dlg h3{margin:0 0 12px}.dlg label{display:block;margin:10px 0;font-weight:600}.dlg input,.dlg select{display:block;width:100%;font:inherit;padding:8px;margin-top:4px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 .q{border-top:1px dashed var(--line);padding:12px 0}.q p{margin:0 0 6px;font-weight:600}.q label{display:block;font-weight:400;margin:4px 0;padding:6px 8px;border-radius:8px}.q label.ok{background:#a9dfb5;color:#111}.q label.no{background:#f4a79b;color:#111}.q .why{font-size:.9rem;color:var(--muted);margin:4px 0 0}
 .act{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}#am{min-height:1.4em;font-size:.92rem}
+.qh{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted)}
+.pill{background:var(--cream);color:var(--ink);padding:2px 10px;border-radius:999px;font-weight:700}
+.bar{height:8px;border-radius:99px;background:var(--line);margin:10px 0 16px;overflow:hidden}.bar i{display:block;height:100%;background:var(--red);transition:width .3s}
+.qt{font-size:.9rem;color:var(--muted);margin:0 0 4px;font-weight:600}
+.qq{font-size:1.2rem;font-weight:700;line-height:1.35;margin:0 0 14px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--ink)}
+.opt.ok{border-color:#2e8b57;background:#2e8b5722}.opt.no{border-color:var(--red);background:#d3321d22}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin:14px 0 0;padding:10px 12px;border-radius:12px;background:var(--cream);font-size:.95rem}
+.res{text-align:center}.res h3{font-size:1.3rem}
+.ring{width:120px;height:120px;border-radius:50%;margin:8px auto;display:grid;place-items:center;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--line) 0)}
+.ring span{width:88px;height:88px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.5rem;font-weight:800}
+.res .act{justify-content:center}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><a href="#top"><img src="logo.webp" alt="InnerWorlds"></a>
 <nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#resources" data-i="nav4"></a><a href="#check" data-i="nav3"></a>
-<button id="accBtn" class="lang" hidden></button><select class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
+<button id="th" class="lang" type="button" aria-label="Theme"></button><button id="accBtn" class="lang" hidden></button><select class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
 
 <main id="top">
 <div class="wrap">
@@ -139,6 +157,6 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 <dialog id="pd"><form id="pf" class="dlg"><h3 data-i="pickT"></h3>
 <label><span data-i="who"></span><select id="pa"><option value="t" data-i="tT"></option><option value="a1" data-i="tA1"></option><option value="a2" data-i="tA2"></option></select></label>
 <div class="act"><button class="btn" type="submit" data-i="save"></button><button class="btn alt" id="px" type="button" data-i="close"></button></div></form></dialog>
-<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="account.js"></script>
+<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="profile.en.js"></script><script src="profile.es.js"></script><script src="profile.ca.js"></script><script src="profile.el.js"></script><script src="profile.ro.js"></script><script src="profile.de.js"></script><script src="account.js"></script>
 </body>
 </html>
