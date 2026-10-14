@@ -53,14 +53,14 @@ h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 8px}
 .final{background:var(--navy);color:#fff;border-radius:22px;padding:32px;text-align:center}
 .final .btn{background:var(--cream);color:var(--navy)}
 footer{padding:32px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
-.lang{margin-left:18px}.lang button{font:inherit;font-size:.8rem;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--ink);padding:3px 8px;cursor:pointer}.lang button[aria-pressed=true]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.lang{margin-left:18px;font:inherit;font-size:.85rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><a href="#top"><img src="logo.webp" alt="InnerWorlds"></a>
 <nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#check" data-i="nav3"></a>
-<span class="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="es">ES</button><button data-l="ca">CA</button></span></nav></div></header>
+<select class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
 
 <main id="top">
 <div class="wrap">
@@ -111,6 +111,6 @@ footer{padding:32px 0;color:var(--muted);font-size:.9rem;border-top:1px solid va
 
 <footer><div class="wrap" data-i="foot"></div></footer>
 
-<script src="app.js"></script>
+<script src="app.js"></script><script src="extra.js"></script>
 </body>
 </html>

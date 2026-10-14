@@ -107,7 +107,7 @@ function render(){
   const t=T[lang];
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
-  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  document.querySelector('.lang').value=lang;
   el.innerHTML=M.map((m,i)=>{const c=m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${m.id?Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span><a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a><a href="${B}quiz/view.php?id=${m.id[k][1]}">${t.quiz}</a></span></div>`).join(''):`<p class="soon">${t.soon}</p>`}</div></article>`}).join('');
   filter();
 }
@@ -116,5 +116,5 @@ function filter(){
   el.querySelectorAll('.row').forEach(r=>r.style.display=aud==='all'||r.dataset.a===aud?'':'none');
 }
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{aud=b.dataset.a;filter()});
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.l;sv('iw-lang',lang);render()});
+document.querySelector('.lang').onchange=e=>{lang=e.target.value;sv('iw-lang',lang);render()};
 render();
