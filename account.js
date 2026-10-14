@@ -182,4 +182,13 @@ function paintHelp(){
 }
 const render1=render;
 render=function(){render1();paintHelp()};
+// ---- every dialog: corner ✕ button, and closes when clicking outside it ----
+document.querySelectorAll('dialog').forEach(d=>{
+  const x=document.createElement('button');
+  x.type='button';x.className='x';x.textContent='✕';x.onclick=()=>d.close();
+  d.prepend(x);
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});
+});
+const render2=render;
+render=function(){render2();document.querySelectorAll('dialog .x').forEach(x=>x.setAttribute('aria-label',T[lang].close))};
 render();
