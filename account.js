@@ -1,15 +1,15 @@
 // Quizzes + Supabase accounts. Loaded after app.js/extra.js/quizzes.*.js; shares their globals.
-Object.assign(T.en,{google:"Continue with Google",signIn:"Sign in",signUp:"Create account",signOut:"Sign out",email:"Email",pass:"Password (min. 8 characters)",who:"I am…",noAcc:"No account? Create one",haveAcc:"Already have an account? Sign in",checkMail:"Check your email to confirm your account.",err:"Something went wrong",close:"Close",check:"Check answers",answerAll:"Answer every question first.",score:"Score",retry:"Try again",saved:"Result saved to your account.",loginToSave:"Sign in to save your results."});
-Object.assign(T.es,{google:"Continuar con Google",signIn:"Iniciar sesión",signUp:"Crear cuenta",signOut:"Cerrar sesión",email:"Correo electrónico",pass:"Contraseña (mín. 8 caracteres)",who:"Soy…",noAcc:"¿No tienes cuenta? Crea una",haveAcc:"¿Ya tienes cuenta? Inicia sesión",checkMail:"Revisa tu correo para confirmar la cuenta.",err:"Algo ha ido mal",close:"Cerrar",check:"Comprobar respuestas",answerAll:"Responde primero a todas las preguntas.",score:"Puntuación",retry:"Intentarlo de nuevo",saved:"Resultado guardado en tu cuenta.",loginToSave:"Inicia sesión para guardar tus resultados."});
-Object.assign(T.ca,{google:"Continua amb Google",signIn:"Inicia la sessió",signUp:"Crea un compte",signOut:"Tanca la sessió",email:"Correu electrònic",pass:"Contrasenya (mín. 8 caràcters)",who:"Sóc…",noAcc:"No tens compte? Crea'n un",haveAcc:"Ja tens compte? Inicia la sessió",checkMail:"Revisa el correu per a confirmar el compte.",err:"Alguna cosa ha anat malament",close:"Tanca",check:"Comprova les respostes",answerAll:"Respon primer a totes les preguntes.",score:"Puntuació",retry:"Torna-ho a provar",saved:"Resultat guardat al teu compte.",loginToSave:"Inicia la sessió per a guardar els resultats."});
-Object.assign(T.el,{google:"Συνέχεια με Google",signIn:"Σύνδεση",signUp:"Δημιουργία λογαριασμού",signOut:"Αποσύνδεση",email:"Email",pass:"Κωδικός (τουλ. 8 χαρακτήρες)",who:"Είμαι…",noAcc:"Δεν έχεις λογαριασμό; Δημιούργησε έναν",haveAcc:"Έχεις ήδη λογαριασμό; Σύνδεση",checkMail:"Έλεγξε το email σου για να επιβεβαιώσεις τον λογαριασμό.",err:"Κάτι πήγε στραβά",close:"Κλείσιμο",check:"Έλεγχος απαντήσεων",answerAll:"Απάντησε πρώτα σε όλες τις ερωτήσεις.",score:"Βαθμολογία",retry:"Δοκίμασε ξανά",saved:"Το αποτέλεσμα αποθηκεύτηκε στον λογαριασμό σου.",loginToSave:"Συνδέσου για να αποθηκεύσεις τα αποτελέσματά σου."});
-Object.assign(T.ro,{google:"Continuă cu Google",signIn:"Autentificare",signUp:"Creează cont",signOut:"Deconectare",email:"E-mail",pass:"Parolă (min. 8 caractere)",who:"Sunt…",noAcc:"Nu ai cont? Creează unul",haveAcc:"Ai deja cont? Autentifică-te",checkMail:"Verifică e-mailul pentru a confirma contul.",err:"Ceva nu a mers bine",close:"Închide",check:"Verifică răspunsurile",answerAll:"Răspunde mai întâi la toate întrebările.",score:"Scor",retry:"Încearcă din nou",saved:"Rezultatul a fost salvat în contul tău.",loginToSave:"Autentifică-te pentru a salva rezultatele."});
-Object.assign(T.de,{google:"Weiter mit Google",signIn:"Anmelden",signUp:"Konto erstellen",signOut:"Abmelden",email:"E-Mail",pass:"Passwort (mind. 8 Zeichen)",who:"Ich bin…",noAcc:"Noch kein Konto? Jetzt erstellen",haveAcc:"Schon ein Konto? Anmelden",checkMail:"Bestätige dein Konto über die E-Mail, die wir dir geschickt haben.",err:"Etwas ist schiefgelaufen",close:"Schließen",check:"Antworten prüfen",answerAll:"Beantworte zuerst alle Fragen.",score:"Ergebnis",retry:"Nochmal versuchen",saved:"Ergebnis in deinem Konto gespeichert.",loginToSave:"Melde dich an, um deine Ergebnisse zu speichern."});
+Object.assign(T.en,{pickT:"Choose your profile",save:"Save",google:"Continue with Google",signIn:"Sign in",signUp:"Create account",signOut:"Sign out",email:"Email",pass:"Password (min. 8 characters)",who:"I am…",noAcc:"No account? Create one",haveAcc:"Already have an account? Sign in",checkMail:"Check your email to confirm your account.",err:"Something went wrong",close:"Close",check:"Check answers",answerAll:"Answer every question first.",score:"Score",retry:"Try again",saved:"Result saved to your account.",loginToSave:"Sign in to save your results."});
+Object.assign(T.es,{pickT:"Elige tu perfil",save:"Guardar",google:"Continuar con Google",signIn:"Iniciar sesión",signUp:"Crear cuenta",signOut:"Cerrar sesión",email:"Correo electrónico",pass:"Contraseña (mín. 8 caracteres)",who:"Soy…",noAcc:"¿No tienes cuenta? Crea una",haveAcc:"¿Ya tienes cuenta? Inicia sesión",checkMail:"Revisa tu correo para confirmar la cuenta.",err:"Algo ha ido mal",close:"Cerrar",check:"Comprobar respuestas",answerAll:"Responde primero a todas las preguntas.",score:"Puntuación",retry:"Intentarlo de nuevo",saved:"Resultado guardado en tu cuenta.",loginToSave:"Inicia sesión para guardar tus resultados."});
+Object.assign(T.ca,{pickT:"Tria el teu perfil",save:"Guarda",google:"Continua amb Google",signIn:"Inicia la sessió",signUp:"Crea un compte",signOut:"Tanca la sessió",email:"Correu electrònic",pass:"Contrasenya (mín. 8 caràcters)",who:"Sóc…",noAcc:"No tens compte? Crea'n un",haveAcc:"Ja tens compte? Inicia la sessió",checkMail:"Revisa el correu per a confirmar el compte.",err:"Alguna cosa ha anat malament",close:"Tanca",check:"Comprova les respostes",answerAll:"Respon primer a totes les preguntes.",score:"Puntuació",retry:"Torna-ho a provar",saved:"Resultat guardat al teu compte.",loginToSave:"Inicia la sessió per a guardar els resultats."});
+Object.assign(T.el,{pickT:"Επίλεξε το προφίλ σου",save:"Αποθήκευση",google:"Συνέχεια με Google",signIn:"Σύνδεση",signUp:"Δημιουργία λογαριασμού",signOut:"Αποσύνδεση",email:"Email",pass:"Κωδικός (τουλ. 8 χαρακτήρες)",who:"Είμαι…",noAcc:"Δεν έχεις λογαριασμό; Δημιούργησε έναν",haveAcc:"Έχεις ήδη λογαριασμό; Σύνδεση",checkMail:"Έλεγξε το email σου για να επιβεβαιώσεις τον λογαριασμό.",err:"Κάτι πήγε στραβά",close:"Κλείσιμο",check:"Έλεγχος απαντήσεων",answerAll:"Απάντησε πρώτα σε όλες τις ερωτήσεις.",score:"Βαθμολογία",retry:"Δοκίμασε ξανά",saved:"Το αποτέλεσμα αποθηκεύτηκε στον λογαριασμό σου.",loginToSave:"Συνδέσου για να αποθηκεύσεις τα αποτελέσματά σου."});
+Object.assign(T.ro,{pickT:"Alege-ți profilul",save:"Salvează",google:"Continuă cu Google",signIn:"Autentificare",signUp:"Creează cont",signOut:"Deconectare",email:"E-mail",pass:"Parolă (min. 8 caractere)",who:"Sunt…",noAcc:"Nu ai cont? Creează unul",haveAcc:"Ai deja cont? Autentifică-te",checkMail:"Verifică e-mailul pentru a confirma contul.",err:"Ceva nu a mers bine",close:"Închide",check:"Verifică răspunsurile",answerAll:"Răspunde mai întâi la toate întrebările.",score:"Scor",retry:"Încearcă din nou",saved:"Rezultatul a fost salvat în contul tău.",loginToSave:"Autentifică-te pentru a salva rezultatele."});
+Object.assign(T.de,{pickT:"Wähle dein Profil",save:"Speichern",google:"Weiter mit Google",signIn:"Anmelden",signUp:"Konto erstellen",signOut:"Abmelden",email:"E-Mail",pass:"Passwort (mind. 8 Zeichen)",who:"Ich bin…",noAcc:"Noch kein Konto? Jetzt erstellen",haveAcc:"Schon ein Konto? Anmelden",checkMail:"Bestätige dein Konto über die E-Mail, die wir dir geschickt haben.",err:"Etwas ist schiefgelaufen",close:"Schließen",check:"Antworten prüfen",answerAll:"Beantworte zuerst alle Fragen.",score:"Ergebnis",retry:"Nochmal versuchen",saved:"Ergebnis in deinem Konto gespeichert.",loginToSave:"Melde dich an, um deine Ergebnisse zu speichern."});
 
 const $=id=>document.getElementById(id);
 const cfg=window.IW_CONFIG||{};
 const sb=cfg.url&&cfg.key&&window.supabase?supabase.createClient(cfg.url,cfg.key):null;
-let user=null,res={},mode='in';
+let user=null,res={},mode='in',asked=false;
 
 const render0=render;
 render=function(){render0();paintAcc();paintBadges()};
@@ -46,6 +46,13 @@ $('af').onsubmit=async e=>{
   $('am').textContent=error?`${T[lang].err}: ${error.message}`:mode==='up'?T[lang].checkMail:'';
   if(!error&&mode==='in')$('ad').close();
 };
+$('px').onclick=()=>$('pd').close();
+$('pf').onsubmit=async e=>{
+  e.preventDefault();
+  const {data}=await sb.auth.updateUser({data:{audience:$('pa').value}});
+  if(data?.user){user=data.user;aud=$('pa').value;render()}
+  $('pd').close();
+};
 async function loadResults(){
   const {data}=await sb.from('quiz_results').select('module,audience,score,total');
   res={};(data||[]).forEach(r=>res[r.module+r.audience]=r);
@@ -55,6 +62,7 @@ if(sb)sb.auth.onAuthStateChange((_,s)=>{
   user=s?.user||null;res={};
   const a=user?.user_metadata?.audience;if(a)aud=a;
   render();
+  if(user&&!a&&!asked){asked=true;$('pa').value='a1';$('pd').showModal()} // first login without a profile (e.g. Google)
   if(user)setTimeout(loadResults,0); // don't await supabase calls inside this callback
 });
 
