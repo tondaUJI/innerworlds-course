@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InnerWorlds · Privacy notice</title>
+<script>try{var t=localStorage.getItem("iw-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--bg:#fffdf8;--ink:#1a1a18;--muted:#5b5b55;--line:#e8e2d0;--cream:#f8e9c0;--red:#d3321d;--blue:#00689a}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14161a;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820;--blue:#5bb3e6}}
+:root[data-theme=dark]{--bg:#14161a;--ink:#f3efe4;--muted:#b5b2a6;--line:#2f333b;--cream:#2a2820;--blue:#5bb3e6}
+body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:720px;margin:0 auto;padding:24px 16px 48px}
+a{color:var(--blue)}h1{color:var(--red);margin:8px 0}h2{font-size:1.15rem;margin:28px 0 4px}p{margin:0 0 8px}
+.draft{background:var(--cream);border-radius:12px;padding:10px 14px;margin:12px 0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<p><a href="index.html">← InnerWorlds</a></p>
+<h1 id="h"></h1>
+<p class="draft" id="d"></p>
+<div id="c"></div>
+</main>
+<script src="config.js"></script>
+<script src="i18n3.en.js"></script><script src="i18n3.es.js"></script><script src="i18n3.ca.js"></script><script src="i18n3.el.js"></script><script src="i18n3.ro.js"></script><script src="i18n3.de.js"></script>
+<script>
+let lang;try{lang=localStorage.getItem('iw-lang')}catch(e){}
+lang=lang||(navigator.language||'en').slice(0,2);
+if(!N[lang])lang='en';
+const tx=N[lang],contact=(window.IW_CONFIG||{}).contact||'[project contact email]';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.documentElement.lang=lang;
+document.title='InnerWorlds · '+tx.privH;
+document.getElementById('h').textContent=tx.privH;
+document.getElementById('d').textContent=tx.privDraft;
+document.getElementById('c').innerHTML=tx.privacy.map(([h,p])=>`<h2>${esc(h)}</h2><p>${esc(p).replace('{{CONTACT}}',esc(contact))}</p>`).join('');
+</script>
+</body>
+</html>

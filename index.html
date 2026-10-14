@@ -78,13 +78,21 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 .ring{width:120px;height:120px;border-radius:50%;margin:8px auto;display:grid;place-items:center;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--line) 0)}
 .ring span{width:88px;height:88px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.5rem;font-weight:800}
 .res .act{justify-content:center}
+.skip{position:absolute;left:-999px;top:0;background:var(--bg);color:var(--ink);padding:8px 12px;z-index:20}.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.chk{font-weight:400!important;font-size:.9rem}.chk input{display:inline;width:auto;margin:0 6px 0 0}
+.help{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:16px 0}
+.help div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.help h3{margin:0 0 8px;font-size:1.05rem}
+.help a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:6px 0;border-top:1px dashed var(--line);font-size:.92rem;color:var(--ink)}.help a b{color:var(--red);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>
 <body>
+<a class="skip" href="#modules" data-i="skip"></a>
 <header><div class="wrap"><a href="#top"><img src="logo.webp" alt="InnerWorlds"></a>
-<nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#resources" data-i="nav4"></a><a href="#check" data-i="nav3"></a>
-<button id="th" class="lang" type="button" aria-label="Theme"></button><button id="accBtn" class="lang" hidden></button><select class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
+<nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#help" data-i="nav5"></a><a href="#resources" data-i="nav4"></a><a href="#check" data-i="nav3"></a>
+<button id="th" class="lang" type="button" aria-label="Theme"></button><button id="accBtn" class="lang" hidden></button><select id="lg" class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
 
 <main id="top">
 <div class="wrap">
@@ -124,6 +132,13 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
   <div class="mods" id="mods"></div>
 </div></section>
 
+<section id="help"><div class="wrap">
+  <h2 data-i="crisisH"></h2>
+  <p class="lead" data-i="crisisP"></p>
+  <div class="help" id="helpg"></div>
+  <p><a href="https://findahelpline.com" target="_blank" rel="noopener" data-i="crisisMore"></a></p>
+</div></section>
+
 <section id="resources"><div class="wrap">
   <h2 data-i="resH"></h2>
   <div class="resource">
@@ -138,10 +153,16 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
     <p data-i="finP"></p>
     <a class="btn" href="https://aulavirtual.uji.es/mod/resource/view.php?id=5997756" data-i="finB"></a>
   </div>
+  <div class="resource" style="margin-top:20px"><div><h3 data-i="finQ"></h3><p data-i="finQP"></p></div>
+    <div class="act">
+      <button class="btn alt fq" data-k="t"><span data-i="tT"></span><span class="bdg" data-m="10" data-k="t"></span></button>
+      <button class="btn alt fq" data-k="a1"><span data-i="tA1"></span><span class="bdg" data-m="10" data-k="a1"></span></button>
+      <button class="btn alt fq" data-k="a2"><span data-i="tA2"></span><span class="bdg" data-m="10" data-k="a2"></span></button>
+    </div></div>
 </div></section>
 </main>
 
-<footer><div class="wrap" data-i="foot"></div></footer>
+<footer><div class="wrap"><div data-i="foot"></div><p><a href="privacy.html" data-i="privL"></a></p></div></footer>
 
 <dialog id="qd"><form method="dialog" class="dlg"><div id="qb"></div></form></dialog>
 <dialog id="ad"><form id="af" class="dlg">
@@ -149,6 +170,8 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 <label><span data-i="email"></span><input id="ae" type="email" required autocomplete="email"></label>
 <label><span data-i="pass"></span><input id="ap" type="password" required minlength="8" autocomplete="current-password"></label>
 <label id="aw"><span data-i="who"></span><select id="aa"><option value="t" data-i="tT"></option><option value="a1" data-i="tA1"></option><option value="a2" data-i="tA2"></option></select></label>
+<label id="ac" class="chk"><input type="checkbox" id="acb"> <span data-i="consent"></span> <a href="privacy.html" target="_blank" rel="noopener" data-i="privL"></a></label>
+<p id="afw"><a href="#" id="afg" data-i="forgot"></a></p>
 <button class="btn alt" id="ag" type="button" data-i="google"></button>
 <p id="am" role="status"></p>
 <div class="act"><button class="btn" id="as" type="submit"></button><button class="btn alt" id="ax" type="button" data-i="close"></button></div>
@@ -157,6 +180,11 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 <dialog id="pd"><form id="pf" class="dlg"><h3 data-i="pickT"></h3>
 <label><span data-i="who"></span><select id="pa"><option value="t" data-i="tT"></option><option value="a1" data-i="tA1"></option><option value="a2" data-i="tA2"></option></select></label>
 <div class="act"><button class="btn" type="submit" data-i="save"></button><button class="btn alt" id="px" type="button" data-i="close"></button></div></form></dialog>
-<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="profile.en.js"></script><script src="profile.es.js"></script><script src="profile.ca.js"></script><script src="profile.el.js"></script><script src="profile.ro.js"></script><script src="profile.de.js"></script><script src="account.js"></script>
+<dialog id="md"><form method="dialog" class="dlg"><h3 data-i="myAcc"></h3><p id="me"></p>
+<div class="act"><button class="btn" id="mo" type="button" data-i="signOut"></button><button class="btn alt" id="md-del" type="button" data-i="delAcc"></button><button class="btn alt" type="submit" data-i="close"></button></div><p id="mm" role="status"></p></form></dialog>
+<dialog id="rd"><form id="rf" class="dlg"><h3 data-i="newPassT"></h3>
+<label><span data-i="pass"></span><input id="rp" type="password" required minlength="8" autocomplete="new-password"></label>
+<div class="act"><button class="btn" type="submit" data-i="newPassB"></button></div><p id="rm" role="status"></p></form></dialog>
+<script src="app.js"></script><script src="extra.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="quizzes.en.js"></script><script src="quizzes.es.js"></script><script src="quizzes.ca.js"></script><script src="quizzes.el.js"></script><script src="quizzes.ro.js"></script><script src="quizzes.de.js"></script><script src="profile.en.js"></script><script src="profile.es.js"></script><script src="profile.ca.js"></script><script src="profile.el.js"></script><script src="profile.ro.js"></script><script src="profile.de.js"></script><script src="i18n3.en.js"></script><script src="i18n3.es.js"></script><script src="i18n3.ca.js"></script><script src="i18n3.el.js"></script><script src="i18n3.ro.js"></script><script src="i18n3.de.js"></script><script src="account.js"></script>
 </body>
 </html>

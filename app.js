@@ -1,4 +1,18 @@
 const B='https://aulavirtual.uji.es/mod/';
+// Google Drive video IDs from the project spreadsheet (Content Table). Module 5 repeats module 4's files in the sheet, so it falls back to aulavirtual.
+const VID=[
+{t:"1px1sebQaktJ5C4eIGZCBoP3dVVA4ncQh",a1:"1DP37cNfdDee2iJHlDBRgrfF4d5sPLPuL",a2:"1lqdX2TCaVJPBkxwdvFdtHQT9SR8MWPtz"},
+{t:"1xxHFDkHQ7JAF52wTaVld59D77Wwj0uaa",a1:"1E8TdYkNSXRuDR_M9LstgKZltLsF0UiAG",a2:"1pEWdGqZFVGzTx6Uk4DaGVTY0BjTCDQAp"},
+{t:"14yjHJrd6NOPU0RD9jx-fS43M-q2C43fL",a1:"1oxqYkflXtrisJFgatEeL-Zv1NnnpK5S-",a2:"1oS1s5hwjdF_8xdZkBGc3otcGynz8dw5Q"},
+{t:"19ePG6C40NITZJamkVC-iHqjPFOcuSQOp",a1:"19Tp1hfoDMGgR4qJKkIblP1QHdBmhey5A",a2:"1wziCJDCYVFee34PRCmhx99hPEypjkvM2"},
+null,
+{t:"11Hg35LRF6u71skoRcvifykC34hUFiE0M",a1:"1IGmwMXrjAUzTgz8LkZNv4nIzEkBAD-qi",a2:"1hzm30SgWd1lc509qS9DowgjiN_rbkGdz"},
+{t:"10FeUt6o0s9Glk7CoY0Pzg_XFzsbRl11o",a1:"1UnLBwX_wdYi0yuuquwAmvbqyZhq5t59y",a2:"1lHatT6sAhxjg70gELqjxuHn_qWo7xQy_"},
+{t:"1gNUjGDIZbcWHHxIJvSHQlY4F7T0Rtfbu",a1:"1I-PFW6S53y0vce3bpXC3Lep7HeEDj3DC",a2:"1tdiEp1N8qSxeNASxkkAySRnsYfuz-wYA"},
+{t:"1YNnHfAGACtPDGjQiwyJYvlIcX5Mgvcnv",a1:"1FRLM3aLXb4HYmtPtzdwQLaX3iMGu5k7j",a2:"19YTDDkPaIt-UTLKZv7CXyfbLhaJk-vtM"},
+{t:"1DtkKnEW0lG0N4nEjpMMg-aZEZ5wP5_5E",a1:"1CJuHsogGTySOtLXxmw0_QbSFjFnHTDKH",a2:"1LoT-uPszj7wrLogkjijdv-PnPzOlhTda"}
+];
+const videoUrl=(m,i,k)=>VID[i]?`https://drive.google.com/file/d/${VID[i][k]}/view`:m.id?`${B}url/view.php?id=${m.id[k][0]}`:null;
 const T={
 en:{nav1:"About",nav2:"Modules",nav3:"Quiz",
 h1:"Understand your <em>inner world</em>. Support others'.",
@@ -107,8 +121,8 @@ function render(){
   const t=T[lang];
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
-  document.querySelector('.lang').value=lang;
-  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${m.id?`<a href="${B}url/view.php?id=${m.id[k][0]}">${t.video}</a>`:''}<button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
+  document.getElementById('lg').value=lang;
+  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p><p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){
@@ -116,5 +130,5 @@ function filter(){
   el.querySelectorAll('.row').forEach(r=>r.style.display=aud==='all'||r.dataset.a===aud?'':'none');
 }
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{aud=b.dataset.a;render()});
-document.querySelector('.lang').onchange=e=>{lang=e.target.value;sv('iw-lang',lang);render()};
+document.getElementById('lg').onchange=e=>{lang=e.target.value;sv('iw-lang',lang);render()};
 render();

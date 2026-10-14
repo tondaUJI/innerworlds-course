@@ -1,0 +1,37 @@
+// Neue UI-Texte: Konten, Datenschutzerklärung, Hilfetelefone, Journalseiten, Abschlussquiz.
+N.de={
+nav5:"Hilfe finden",privL:"Datenschutzerklärung",
+consent:"Ich habe die Datenschutzerklärung gelesen. Wenn ich in meinem Land unter dem Mindestalter für die digitale Einwilligung (14–16) bin, hat ein Elternteil oder eine obsorgeberechtigte Person dieses Konto erlaubt.",
+forgot:"Passwort vergessen?",needEmail:"Gib zuerst deine E-Mail-Adresse ein.",resetSent:"Wenn es zu dieser E-Mail-Adresse ein Konto gibt, haben wir dir einen Link zum Zurücksetzen des Passworts geschickt.",
+newPassT:"Neues Passwort festlegen",newPassB:"Passwort speichern",passUpdated:"Passwort geändert.",
+myAcc:"Mein Konto",delAcc:"Mein Konto löschen",delConfirm:"Damit werden dein Konto und alle deine gespeicherten Ergebnisse endgültig gelöscht. Fortfahren?",delDone:"Dein Konto wurde gelöscht.",
+finQ:"Abschlussquiz",finQP:"Zehn Fragen, eine aus jedem Modul. Wähle dein Profil, um zu starten.",
+jBtn:"📄 Journal",jT:"Journalseite",jTheory:"Kurz gesagt",jReflect:"Nachdenken und aufschreiben",jClass:"Wie könnte ich das in meiner Klasse oder meinem Workshop einsetzen?",jG1:"Was ist mir in diesem Modul aufgefallen?",jG2:"Eine Sache, die ich diese Woche ausprobiere:",jQuiz:"Teste dich selbst",jName:"Name",jDate:"Datum",jPrint:"Drucken oder als PDF speichern",jFoot:"InnerWorlds Mental Health Platform · Lernmaterial, keine Diagnose.",
+jPrompts:[
+"Zeichne heute dein eigenes Thermometer. Wo stehe ich gerade, und warum?",
+"Meine Woche als Wetter: Gib jedem Tag ein Wettersymbol. Was hat den Sturm vorbeiziehen lassen, oder warum ist er geblieben?",
+"Wähle drei Wörter, die beschreiben, wie du dich diese Woche fühlst. Zeichne, wie jedes davon aussieht.",
+"Was ich an mir bemerke: Schreib frei auf, was dir in letzter Zeit aufgefallen ist. Das ist keine Diagnose.",
+"Dinge, die ich noch nie laut gesagt habe: Vervollständige die Sätze und schreib dann einen Brief an dein zukünftiges Ich.",
+"Mein Werkzeugkasten für schwierige Zeiten: Schreib deine fünf liebsten Strategien auf und zeichne dein Notfallset.",
+"Gewohnheits-Tracker: Welche Gewohnheit fällt mir am schwersten, und warum? Gestalte meine ideale Abendroutine.",
+"Mein Feed-Check: Skizziere, was mir mein Feed zeigt. Wie fühle ich mich dabei? Was würde ich ändern?",
+"Woher ich komme, wo ich bin: Zeichne die Schichten meiner Identität auf. Wo spüre ich Spannung, und wo Stolz?",
+"Mein Wertekompass: Zeichne und beschrifte deinen Kompass. Welcher Wert leitet mich gerade am meisten?"],
+crisisH:"Du möchtest jetzt mit jemandem reden?",
+crisisP:"Wenn du oder jemand, den du kennst, in Gefahr ist, ruf die Notrufnummer deines Landes an. Diese Angebote sind kostenlos oder günstig, und viele sind Tag und Nacht erreichbar. Nummern und Zeiten können sich ändern, schau deshalb vorher nach.",
+cEU:"Alle EU-Länder",cES:"Spanien",cAT:"Österreich",cGR:"Griechenland",cRO:"Rumänien",
+lEmerg:"Notruf",lChild:"Telefon für Kinder und Jugendliche",lSuic:"Telefon zur Suizidprävention",lListen:"Telefon für emotionale Unterstützung",lAnar:"ANAR-Telefon für Kinder und Jugendliche",lSmile:"Das Telefon von „Das Lächeln des Kindes“",lAdult:"Telefon gegen Suizid (für Erwachsene, ehrenamtlich betrieben)",
+crisisMore:"Andere Länder: findahelpline.com",
+privH:"Datenschutzerklärung",privDraft:"Entwurf, wartet auf die Prüfung durch die Datenschutzbeauftragte bzw. den Datenschutzbeauftragten des Projekts.",
+privacy:[
+["Wer wir sind","Die InnerWorlds Mental Health Platform ist ein Bildungsprojekt. Du erreichst uns unter {{CONTACT}}."],
+["Was wir erheben","Nur wenn du ein Konto anlegst: deine E-Mail-Adresse, dein Passwort (wird von unserem Anbieter verschlüsselt gespeichert, wir können es nicht sehen), das Profil, das du wählst (Lehrperson, 12–14 oder 15–18) und deine Quiz-Ergebnisse. Wenn du dich mit Google anmeldest, erhalten wir deine E-Mail-Adresse und deine Google-Konto-Kennung, niemals dein Google-Passwort."],
+["Warum wir das erheben","Damit du dich anmelden kannst und dein Fortschritt gespeichert bleibt. Rechtsgrundlage ist deine Einwilligung. Wir verwenden deine Daten nicht für Werbung oder Profilbildung und verkaufen sie niemals."],
+["Ohne Konto","Du kannst die ganze Website ohne Konto nutzen. Dann erheben wir keine personenbezogenen Daten. Dein Browser speichert deine Sprache und dein Design auf deinem eigenen Gerät."],
+["Wer deine Daten verarbeitet","Supabase (Anbieter für Konto und Datenbank), GitHub Pages (Hosting der Website, dabei können IP-Adressen protokolliert werden) und, nur wenn du es auswählst, Google (Anmeldung)."],
+["Junge Menschen","Das Mindestalter für die digitale Einwilligung liegt je nach Land zwischen 14 und 16 Jahren. Darunter muss ein Elternteil oder eine obsorgeberechtigte Person das Konto erlauben. Wir bitten dich, das bei der Registrierung zu bestätigen."],
+["Speicherung und Löschung von Daten","Wir speichern deine Daten, bis du dein Konto löschst. Du kannst es jederzeit selbst unter „Mein Konto“ löschen; dadurch werden dein Konto und deine Ergebnisse endgültig entfernt."],
+["Deine Rechte","Du kannst Auskunft, Berichtigung, Löschung, Einschränkung oder Übertragbarkeit deiner Daten verlangen, deine Einwilligung widerrufen oder der Verarbeitung widersprechen. Du kannst dich auch bei deiner Datenschutzbehörde beschweren (zum Beispiel AEPD in Spanien, DSB in Österreich, HDPA in Griechenland, ANSPDCP in Rumänien)."],
+["Kein medizinisches Angebot","Diese Plattform dient der Bildung. Sie stellt keine Diagnose, bietet keine Behandlung und ist kein Notdienst. Wenn du oder jemand, den du kennst, jetzt Hilfe braucht, findest du die Hilfetelefone auf der Startseite."]]
+};
