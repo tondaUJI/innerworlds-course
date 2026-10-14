@@ -54,12 +54,13 @@ h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 8px}
 .final .btn{background:var(--cream);color:var(--navy)}
 footer{padding:32px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
 .lang{margin-left:18px;font:inherit;font-size:.85rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.resource{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--cream);border-radius:18px;padding:24px;margin-top:12px}.resource h3{margin:0 0 6px}.resource p{margin:0 0 6px;max-width:640px}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><a href="#top"><img src="logo.webp" alt="InnerWorlds"></a>
-<nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#check" data-i="nav3"></a>
+<nav><a href="#about" data-i="nav1"></a><a href="#modules" data-i="nav2"></a><a href="#resources" data-i="nav4"></a><a href="#check" data-i="nav3"></a>
 <select class="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="ca">Català</option><option value="el">Ελληνικά</option><option value="ro">Română</option><option value="de">Deutsch</option></select></nav></div></header>
 
 <main id="top">
@@ -98,6 +99,14 @@ footer{padding:32px 0;color:var(--muted);font-size:.9rem;border-top:1px solid va
     <button data-a="a2" aria-pressed="false" data-i="tA2"></button>
   </div>
   <div class="mods" id="mods"></div>
+</div></section>
+
+<section id="resources"><div class="wrap">
+  <h2 data-i="resH"></h2>
+  <div class="resource">
+    <div><h3 data-i="resT"></h3><p data-i="resP"></p><p class="sub" data-i="resM"></p></div>
+    <a class="btn" href="InnerWorlds_Methodology_Manual.pdf" download data-i="resB"></a>
+  </div>
 </div></section>
 
 <section id="check"><div class="wrap">

@@ -90,6 +90,15 @@ de:[
 ["Identität, Kultur & Zugehörigkeit","Multikultureller Stress; LGBTQ+; Fluchterfahrung; Intersektionalität","Identität hat viele Schichten: Kultur, Sprache, Familie, Geschlecht, Glaube, Fähigkeiten und Migration wirken zusammen. Inklusion stärkt das Wohlbefinden; wiederholter Ausschluss schadet.","Zugehörigkeit entsteht durch kleine Alltagshandlungen: Respekt, inklusive Sprache und keine Vorannahmen."],
 ["Die großen Fragen stellen","Sinn, Werte, Ungewissheit, Philosophie als Bewältigungsstrategie","„Wer bin ich?“ und „Was ist mir wichtig?“ sind natürliche Fragen des Erwachsenwerdens. Sie offen zu erkunden hilft, mit Ungewissheit umzugehen – ohne die eine perfekte Antwort zu brauchen.","Unsere Werte sind ein Kompass, der Ungewissheit in zielgerichtetes Handeln verwandelt."]]
 };
+const R={
+en:{nav4:"Resources",resH:"Resources",resT:"Methodology Manual",resP:"Thirty session designs for adolescent mental health: a practical tool for youth workers and teachers to run workshops and lessons.",resM:"PDF · 81 pages · 1.1 MB",resB:"⬇ Download the manual"},
+es:{nav4:"Recursos",resH:"Recursos",resT:"Manual de metodología",resP:"Treinta diseños de sesiones sobre salud mental adolescente: una herramienta práctica para educadores y docentes que organizan talleres y clases.",resM:"PDF · 81 páginas · 1,1 MB",resB:"⬇ Descargar el manual"},
+ca:{nav4:"Recursos",resH:"Recursos",resT:"Manual de metodologia",resP:"Trenta dissenys de sessions sobre salut mental adolescent: una eina pràctica per a educadors i docents que organitzen tallers i classes.",resM:"PDF · 81 pàgines · 1,1 MB",resB:"⬇ Descarregar el manual"},
+el:{nav4:"Υλικό",resH:"Υλικό",resT:"Εγχειρίδιο μεθοδολογίας",resP:"Τριάντα σχέδια συνεδριών για την ψυχική υγεία των εφήβων: ένα πρακτικό εργαλείο για youth workers και εκπαιδευτικούς που οργανώνουν εργαστήρια και μαθήματα.",resM:"PDF · 81 σελίδες · 1,1 MB",resB:"⬇ Λήψη του εγχειριδίου"},
+ro:{nav4:"Resurse",resH:"Resurse",resT:"Manual de metodologie",resP:"Treizeci de modele de sesiuni pentru sănătatea mintală a adolescenților: un instrument practic pentru lucrători de tineret și profesori care organizează ateliere și lecții.",resM:"PDF · 81 de pagini · 1,1 MB",resB:"⬇ Descarcă manualul"},
+de:{nav4:"Materialien",resH:"Materialien",resT:"Methodikhandbuch",resP:"Dreißig Sitzungskonzepte zur psychischen Gesundheit Jugendlicher: ein praktisches Werkzeug für Jugendarbeit und Lehrkräfte, die Workshops und Unterricht gestalten.",resM:"PDF · 81 Seiten · 1,1 MB",resB:"⬇ Handbuch herunterladen"}
+};
+for(const l in R)Object.assign(T[l],R[l]);
 M.forEach((m,i)=>{for(const l in X)m[l]=X[l][i]});
 lang=sv('iw-lang')||(navigator.language||'en').slice(0,2);
 if(!T[lang])lang='en';
