@@ -86,6 +86,21 @@ dialog{border:0;border-radius:18px;max-width:640px;width:calc(100% - 32px);paddi
 .help a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:6px 0;border-top:1px dashed var(--line);font-size:.92rem;color:var(--ink)}.help a b{color:var(--red);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
 .mod .zones{grid-template-columns:1fr;gap:6px;margin:0 0 10px}.mod .zone{padding:6px 12px;font-size:.88rem}
+.mod{border-top:0!important;overflow:hidden;--c:var(--red)}
+.mod.c0{--c:#d3321d}.mod.c1{--c:#00689a}.mod.c2{--c:#e0a82e}.mod.c3{--c:#7b5ea7}.mod.c4{--c:#2e8b57}
+.mh{display:flex;gap:14px;align-items:center;margin:-20px -20px 12px;padding:16px 20px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 24%,var(--card)),var(--card))}
+.ic{flex:none;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:1.9rem;background:var(--card);box-shadow:0 2px 0 var(--c),0 6px 14px #0002}
+.mh .num{color:var(--c)}
+.chips{margin:0 0 10px}.chips span{display:inline-block;background:color-mix(in srgb,var(--c) 14%,var(--card));border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:999px;padding:1px 10px;font-size:.8rem;margin:0 4px 4px 0}
+.chips span::first-letter{text-transform:uppercase}
+.mod .sum{font-size:.98rem;line-height:1.55}
+.mod .msg{border-left:4px solid var(--c);border-radius:0 10px 10px 0}
+.fmt div::before{display:block;font-size:1.8rem;margin-bottom:4px}
+.fmt div[data-i=f1]::before{content:"🎬"}.fmt div[data-i=f2]::before{content:"📄"}.fmt div[data-i=f3]::before{content:"🧑‍🏫"}.fmt div[data-i=f4]::before{content:"⚡"}
+.help h3::before{margin-right:6px}
+/* the logo has dark text: give it a light base in dark mode */
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) img[src="logo.webp"]{background:#fffdf8;border-radius:14px;padding:6px}}
+:root[data-theme=dark] img[src="logo.webp"]{background:#fffdf8;border-radius:14px;padding:6px}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.zones{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.9rem}}
 </style>
 </head>

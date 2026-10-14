@@ -13,6 +13,7 @@ null,
 {t:"1DtkKnEW0lG0N4nEjpMMg-aZEZ5wP5_5E",a1:"1CJuHsogGTySOtLXxmw0_QbSFjFnHTDKH",a2:"1LoT-uPszj7wrLogkjijdv-PnPzOlhTda"}
 ];
 const videoUrl=(m,i,k)=>VID[i]?`https://drive.google.com/file/d/${VID[i][k]}/view`:m.id?`${B}url/view.php?id=${m.id[k][0]}`:null;
+const ICONS=['🚦','⚖️','🎨','🔎','🤝','🌱','😴','📱','🌍','🧭'];
 const T={
 en:{nav1:"About",nav2:"Modules",nav3:"Quiz",
 h1:"Understand your <em>inner world</em>. Support others'.",
@@ -122,7 +123,7 @@ function render(){
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=t[e.dataset.i]);
   document.getElementById('lg').value=lang;
-  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod"><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3><p class="sub">${c[1]}</p>${i===0?`<div class="zones"><div class="zone g">${t.zg}</div><div class="zone y">${t.zy}</div><div class="zone r">${t.zr}</div></div>`:''}<p>${c[2]}</p>${c[3]?`<div class="msg"><b>${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
+  el.innerHTML=M.map((m,i)=>{const p=aud!=='all'&&typeof PX!=='undefined'&&(PX[lang]||PX.en)[i][aud],c=p?[m[lang][0],m[lang][1],p[0],p[1]]:m[lang];return `<article class="mod c${i%5}"><div class="mh"><span class="ic" aria-hidden="true">${ICONS[i]}</span><div><div class="num">${t.mod} ${i+1}</div><h3>${c[0]}</h3></div></div><div class="chips">${c[1].split(/[;,]\s*/).filter(Boolean).map(x=>`<span>${x}</span>`).join('')}</div>${i===0?`<div class="zones"><div class="zone g">${t.zg}</div><div class="zone y">${t.zy}</div><div class="zone r">${t.zr}</div></div>`:''}<p class="sum">${c[2]}</p>${c[3]?`<div class="msg"><b>💡 ${t.key}</b> ${c[3]}</div>`:''}<div class="aud">${Object.keys(t.A).map(k=>`<div class="row" data-a="${k}"><span>${t.A[k]}</span><span>${videoUrl(m,i,k)?`<a href="${videoUrl(m,i,k)}" target="_blank" rel="noopener">${t.video}</a>`:''}<button class="qbtn jbtn" data-m="${i}" data-k="${k}">${t.jBtn||'📄'}</button><button class="qbtn" data-m="${i}" data-k="${k}">${t.quiz}<span class="bdg" data-m="${i}" data-k="${k}"></span></button></span></div>`).join('')}</div></article>`}).join('');
   filter();
 }
 function filter(){
