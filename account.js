@@ -21,6 +21,27 @@ const eff=()=>root.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').mat
 const paintTh=()=>{th.textContent=eff()==='dark'?'☀️':'🌙'};
 th.onclick=()=>{const n=eff()==='dark'?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('iw-theme',n)}catch(e){}paintTh()};
 paintTh();
+// ---- achievements: computed from the saved quiz results (no extra table) ----
+const ACH=[
+ {id:'first',e:'🌱',ok:r=>r.length>=1},
+ {id:'perfect',e:'⭐',ok:r=>r.some(x=>x.score===x.total)},
+ {id:'explorer',e:'🧭',ok:r=>new Set(r.filter(x=>x.module<10).map(x=>x.module)).size>=5},
+ {id:'course',e:'🎓',ok:r=>new Set(r.filter(x=>x.module<10).map(x=>x.module)).size>=10},
+ {id:'final',e:'🏁',ok:r=>r.some(x=>x.module===10)},
+ {id:'champ',e:'🏆',ok:r=>r.some(x=>x.module===10&&x.score>=9)}];
+const ACHT={
+en:{achH:"Achievements",achNew:"New achievement!",first:["First step","Complete your first quiz."],perfect:["Perfect score","Get every answer right in a quiz."],explorer:["Explorer","Complete quizzes from 5 different modules."],course:["Full course","Complete a quiz for all 10 modules."],final:["Final quiz","Complete the final quiz."],champ:["Champion","Score 9 or more out of 10 in the final quiz."]},
+es:{achH:"Logros",achNew:"¡Nuevo logro!",first:["Primer paso","Completa tu primer quiz."],perfect:["Puntuación perfecta","Acierta todas las preguntas de un quiz."],explorer:["Explorador/a","Completa quizzes de 5 módulos distintos."],course:["Curso completo","Completa un quiz de los 10 módulos."],final:["Quiz final","Completa el quiz final."],champ:["Campeón/a","Saca 9 o más sobre 10 en el quiz final."]},
+ca:{achH:"Assoliments",achNew:"Nou assoliment!",first:["Primer pas","Completa el teu primer quiz."],perfect:["Puntuació perfecta","Encerta totes les preguntes d'un quiz."],explorer:["Explorador/a","Completa quizzes de 5 mòduls diferents."],course:["Curs complet","Completa un quiz dels 10 mòduls."],final:["Quiz final","Completa el quiz final."],champ:["Campió/ona","Trau 9 o més sobre 10 al quiz final."]},
+el:{achH:"Επιτεύγματα",achNew:"Νέο επίτευγμα!",first:["Πρώτο βήμα","Ολοκλήρωσε το πρώτο σου κουίζ."],perfect:["Τέλειο σκορ","Απάντησε σωστά σε όλες τις ερωτήσεις ενός κουίζ."],explorer:["Εξερευνητής","Ολοκλήρωσε κουίζ από 5 διαφορετικές ενότητες."],course:["Πλήρες μάθημα","Ολοκλήρωσε κουίζ και για τις 10 ενότητες."],final:["Τελικό κουίζ","Ολοκλήρωσε το τελικό κουίζ."],champ:["Πρωταθλητής","Βαθμολογήσου 9 ή περισσότερα στα 10 στο τελικό κουίζ."]},
+ro:{achH:"Realizări",achNew:"Realizare nouă!",first:["Primul pas","Termină primul tău quiz."],perfect:["Scor perfect","Răspunde corect la toate întrebările unui quiz."],explorer:["Explorator","Termină quizuri din 5 module diferite."],course:["Curs complet","Termină un quiz pentru toate cele 10 module."],final:["Quiz final","Termină quizul final."],champ:["Campion","Obține 9 sau mai mult din 10 la quizul final."]},
+de:{achH:"Erfolge",achNew:"Neuer Erfolg!",first:["Erster Schritt","Schließe dein erstes Quiz ab."],perfect:["Volle Punktzahl","Beantworte alle Fragen eines Quiz richtig."],explorer:["Entdecker:in","Schließe Quizze aus 5 verschiedenen Modulen ab."],course:["Ganzer Kurs","Schließe ein Quiz für alle 10 Module ab."],final:["Abschlussquiz","Schließe das Abschlussquiz ab."],champ:["Champion","Erreiche im Abschlussquiz 9 oder mehr von 10."]}};
+for(const l in ACHT)Object.assign(T[l],ACHT[l]);
+const unlocked=()=>ACH.filter(a=>a.ok(Object.values(res))).map(a=>a.id);
+function paintAch(){
+  const t=T[lang],got=unlocked();
+  $('mach').innerHTML=ACH.map(a=>`<div class="${got.includes(a.id)?'on':''}"><span>${a.e}</span><b>${t[a.id][0]}</b><small>${t[a.id][1]}</small></div>`).join('');
+}
 let user=null,res={},mode='in',asked=false;
 
 const render0=render;
@@ -34,7 +55,7 @@ function paintAcc(){
   b.hidden=!sb;
   b.textContent=user?`${t.myAcc} (${user.email})`:t.signIn;
 }
-$('accBtn').onclick=()=>{if(user){$('me').textContent=user.email;$('mm').textContent='';$('md').showModal()}else openAuth('in')};
+$('accBtn').onclick=()=>{if(user){$('me').textContent=user.email;$('mm').textContent='';paintAch();$('md').showModal()}else openAuth('in')};
 
 function openAuth(m){
   mode=m;const t=T[lang];
@@ -146,8 +167,9 @@ async function showResult(){
     <div class="act"><button class="btn" type="button" id="qa">${t.retry}</button><button class="btn alt" type="submit">${t.close}</button></div></div>`;
   $('qa').onclick=()=>m===10?document.querySelector(`.fq[data-k=${k}]`).click():openQuiz(m,k);
   if(user){
+    const before=unlocked();
     const {error}=await sb.from('quiz_results').upsert({user_id:user.id,module:m,audience:k,score,total:qs.length,updated_at:new Date().toISOString()});
-    if(error)$('qr').textContent=`${t.err}: ${error.message}`;else{$('qr').textContent=t.saved;res[m+k]={score,total:qs.length};paintBadges()}
+    if(error)$('qr').textContent=`${t.err}: ${error.message}`;else{$('qr').textContent=t.saved;res[m+k]={module:m,audience:k,score,total:qs.length};paintBadges();const gained=ACH.filter(x=>!before.includes(x.id)&&unlocked().includes(x.id));if(gained.length)$('qr').insertAdjacentHTML('afterend',`<div class="newach"><b>${t.achNew}</b> ${gained.map(x=>x.e+' '+t[x.id][0]).join(' · ')}</div>`)}
   }else if(sb)$('qr').textContent=t.loginToSave;
 }
 
