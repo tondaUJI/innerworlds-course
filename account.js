@@ -75,7 +75,7 @@ $('af').onsubmit=async e=>{
   e.preventDefault();
   const email=$('ae').value,password=$('ap').value;
   const {error}=mode==='up'
-    ?await sb.auth.signUp({email,password,options:{data:{audience:$('aa').value}}})
+    ?await sb.auth.signUp({email,password,options:{data:{audience:$('aa').value},emailRedirectTo:location.origin+location.pathname}})
     :await sb.auth.signInWithPassword({email,password});
   $('am').textContent=error?`${T[lang].err}: ${error.message}`:mode==='up'?T[lang].checkMail:'';
   if(!error&&mode==='in')$('ad').close();
