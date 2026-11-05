@@ -11,7 +11,11 @@ const LTT={"en": "Sign in to take the quizzes. Your results are saved to your ac
 const SKIP={"en": "Skip to content", "es": "Saltar al contenido", "ca": "Salta al contingut", "el": "Μετάβαση στο περιεχόμενο", "ro": "Salt la conținut", "de": "Zum Inhalt springen"};
 for(const l in SKIP)T[l].skip=SKIP[l];
 for(const l in LTT)T[l].loginToTake=LTT[l];
+const FR={"en": ["Who are you?", "To sign in or take the quizzes, please open the platform in its own tab.", "Open in a new tab"], "es": ["¿Quién eres?", "Para iniciar sesión o hacer los quizzes, abre la plataforma en su propia pestaña.", "Abrir en una pestaña nueva"], "ca": ["Qui eres?", "Per a iniciar la sessió o fer els quizzes, obri la plataforma en la seua pròpia pestanya.", "Obri en una pestanya nova"], "el": ["Ποιος είσαι;", "Για να συνδεθείς ή να κάνεις τα κουίζ, άνοιξε την πλατφόρμα σε δική της καρτέλα.", "Άνοιγμα σε νέα καρτέλα"], "ro": ["Cine ești?", "Pentru a te autentifica sau a face quizurile, deschide platforma în propria filă.", "Deschide într-o filă nouă"], "de": ["Wer bist du?", "Zum Anmelden oder für die Quizze öffne die Plattform bitte in einem eigenen Tab.", "In neuem Tab öffnen"]};
+for(const l in FR){T[l].whoH=FR[l][0];T[l].frameNote=FR[l][1];T[l].frameLink=FR[l][2]}
 const $=id=>document.getElementById(id);
+// Inside an iframe (e.g. embedded on another site) browsers block third-party storage and Google refuses framing, so sign-in must happen in a full tab.
+const framed=window.self!==window.top;
 const cfg=window.IW_CONFIG||{};
 const sb=cfg.url&&cfg.key&&window.supabase?supabase.createClient(cfg.url,cfg.key):null;
 
@@ -58,6 +62,7 @@ function paintAcc(){
 $('accBtn').onclick=()=>{if(user){$('me').textContent=user.email;$('mm').textContent='';paintAch();$('md').showModal()}else openAuth('in')};
 
 function openAuth(m){
+  if(framed){window.open(location.href,'_blank','noopener');return}
   mode=m;const t=T[lang];
   $('at').textContent=m==='up'?t.signUp:t.signIn;
   $('as').textContent=m==='up'?t.signUp:t.signIn;
@@ -213,4 +218,9 @@ document.querySelectorAll('dialog').forEach(d=>{
 });
 const render2=render;
 render=function(){render2();document.querySelectorAll('dialog .x').forEach(x=>x.setAttribute('aria-label',T[lang].close))};
+if(framed){
+  const n=document.createElement('div');n.className='frameNote';document.body.prepend(n);
+  const r3=render;
+  render=function(){r3();n.innerHTML=`${T[lang].frameNote} <a href="${location.href}" target="_blank" rel="noopener">${T[lang].frameLink}</a>`};
+}
 render();

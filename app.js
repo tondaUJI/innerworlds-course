@@ -123,6 +123,8 @@ const sv=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.s
 let lang=sv('iw-lang')||(navigator.language||'en').slice(0,2);
 if(!T[lang])lang='en';
 let aud='all';
+try{const s=localStorage.getItem('iw-aud');if(['t','a1','a2'].includes(s))aud=s}catch(e){}
+function setAud(x){aud=x;try{localStorage.setItem('iw-aud',x)}catch(e){}render()}
 const el=document.getElementById('mods');
 function render(){
   const t=T[lang];
@@ -133,9 +135,11 @@ function render(){
   filter();
 }
 function filter(){
+  document.querySelectorAll('.who button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.a===aud));
   document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.a===aud));
   el.querySelectorAll('.row').forEach(r=>r.style.display=aud==='all'||r.dataset.a===aud?'':'none');
 }
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{aud=b.dataset.a;render()});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>setAud(b.dataset.a));
+document.querySelectorAll('.who button').forEach(b=>b.onclick=()=>{setAud(b.dataset.a);document.getElementById('modules').scrollIntoView({behavior:'smooth'})});
 document.getElementById('lg').onchange=e=>{lang=e.target.value;sv('iw-lang',lang);render()};
 render();
